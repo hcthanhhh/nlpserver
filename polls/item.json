@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CPU",
+    "item": [
+      {"product": "i5-9400", "price": 5000},
+      {"product": "i5-8400F", "price": 4200},
+      {"product": "i7-9700K", "price": 10000}
+    ]
+  },
+  {
+    "id": "MainProducts",
+    "item": [
+      {"product": "Asrock", "price": 4100},
+      {"product": "Asus", "price": 5000},
+      {"product": "Gigabyte", "price": 4500}
+    ]
+  },
+  {
+    "id": "RamProducts",
+    "item": [
+      {"product": "32GB", "price": 9000},
+      {"product": "16GB", "price": 4000},
+      {"product": "8GBx2", "price": 3500}
+    ]
+  }
+]
