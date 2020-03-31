@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import nltk
+import json
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 # Create your views here.
@@ -11,9 +12,6 @@ from . import views
 
 
 def index(request):
-    a = "I'll love you <3. Because you're stupid."
-    # print("request:", c)
-
     qd = request.GET
     print("qd = ", qd)
     language = qd['L']
@@ -25,7 +23,6 @@ def index(request):
     print("text = ", text)
     b = []
 
-    c = "but I'm worse than him :("
     if classify == "P":
         sent_text = nltk.sent_tokenize(text)  # this gives us a list of sentences
         # now loop over each sentence and tokenize it separately
@@ -33,5 +30,11 @@ def index(request):
             tokenized_text = nltk.word_tokenize(sentence)
             tagged = nltk.pos_tag(tokenized_text)
             print(tagged)
-            b.append(tagged)
-    return HttpResponse(b)
+            for tag in tagged:
+                d = '' .join(['"', tag[0], '":"', tag[1], '"'])
+                b.append(d)
+
+    e = ", " .join(b)
+    e = e[:0] + '{' + e[0:]
+    e = e[:len(e)] + '}' + e[len(e):]
+    return HttpResponse(e, content_type="application/json")
